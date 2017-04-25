@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>EpBunch &mdash; eppy 0.5 documentation</title>
+    <title>EpBunch &mdash; eppy 0.5.43 documentation</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.5',
+        VERSION:     '0.5.43',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,9 +23,9 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="eppy 0.5 documentation" href="../index.html" />
+    <link rel="top" title="eppy 0.5.43 documentation" href="../index.html" />
     <link rel="up" title="Developer Documentation for eppy" href="index.html" />
-    <link rel="next" title="IDF in modeleditor" href="modeleditor.html" />
+    <link rel="next" title="Idf_MSequence - Syntactic Sugar work" href="idf_msequence.html" />
     <link rel="prev" title="Underlying Data Structure of eppy" href="data_eppy.html" /> 
   </head>
   <body>
@@ -36,12 +36,12 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modeleditor.html" title="IDF in modeleditor"
+          <a href="idf_msequence.html" title="Idf_MSequence - Syntactic Sugar work"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="data_eppy.html" title="Underlying Data Structure of eppy"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">eppy 0.5 documentation</a> &raquo;</li>
+        <li><a href="../index.html">eppy 0.5.43 documentation</a> &raquo;</li>
           <li><a href="index.html" accesskey="U">Developer Documentation for eppy</a> &raquo;</li> 
       </ul>
     </div>  
@@ -143,7 +143,7 @@ AttributeError                            Traceback (most recent call last)
 ----&gt; 2 print adict.a
 
 
-AttributeError: 'dict' object has no attribute 'a'</pre>
+AttributeError: &#x27;dict&#x27; object has no attribute &#x27;a&#x27;</pre>
 </div>
 <p>What method gets called when we say <strong>adict.a</strong> ?</p>
 <p>The magic method here is <tt class="docutils literal"><span class="pre">__getattr__</span></tt>() and <tt class="docutils literal"><span class="pre">__setattr__()</span></tt>.
@@ -357,8 +357,8 @@ way</p>
 bunch_airgap = EpBunch(obj, objls, objidd)
 # Use this table to see how __setattr__ and __getattr__ work in EpBunch
 
-obj   = ['MATERIAL:AIRGAP', 'F04 Wall air space resistance', 0.15                ]
-objls = ['key',             'Name',                         'Thermal_Resistance']
+obj   = [&#x27;MATERIAL:AIRGAP&#x27;, &#x27;F04 Wall air space resistance&#x27;, 0.15                ]
+objls = [&#x27;key&#x27;,             &#x27;Name&#x27;,                         &#x27;Thermal_Resistance&#x27;]
 i     =   0                  1                               2</pre>
 </div>
 <div class="code python highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="n">bunch_airgap</span><span class="o">.</span><span class="n">Name</span>
@@ -513,8 +513,8 @@ EpBunch and in effect it uses <tt class="docutils literal"><span class="pre">Epb
   <p class="topless"><a href="data_eppy.html"
                         title="previous chapter">Underlying Data Structure of eppy</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="modeleditor.html"
-                        title="next chapter">IDF in modeleditor</a></p>
+  <p class="topless"><a href="idf_msequence.html"
+                        title="next chapter">Idf_MSequence - Syntactic Sugar work</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/dev_docs/epbunch.txt"
@@ -544,12 +544,12 @@ EpBunch and in effect it uses <tt class="docutils literal"><span class="pre">Epb
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modeleditor.html" title="IDF in modeleditor"
+          <a href="idf_msequence.html" title="Idf_MSequence - Syntactic Sugar work"
              >next</a> |</li>
         <li class="right" >
           <a href="data_eppy.html" title="Underlying Data Structure of eppy"
              >previous</a> |</li>
-        <li><a href="../index.html">eppy 0.5 documentation</a> &raquo;</li>
+        <li><a href="../index.html">eppy 0.5.43 documentation</a> &raquo;</li>
           <li><a href="index.html" >Developer Documentation for eppy</a> &raquo;</li> 
       </ul>
     </div>

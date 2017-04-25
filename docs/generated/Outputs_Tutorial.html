@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Reading outputs from E+ &mdash; eppy 0.5 documentation</title>
+    <title>Reading outputs from E+ &mdash; eppy 0.5.43 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.5',
+        VERSION:     '0.5.43',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="eppy 0.5 documentation" href="index.html" />
+    <link rel="top" title="eppy 0.5.43 documentation" href="index.html" />
     <link rel="next" title="New functions" href="newfunctions.html" />
     <link rel="prev" title="HVAC Loops" href="HVAC_Tutorial.html" /> 
   </head>
@@ -35,15 +35,12 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="newfunctions.html" title="New functions"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="HVAC_Tutorial.html" title="HVAC Loops"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">eppy 0.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">eppy 0.5.43 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -82,7 +79,7 @@ get the data from any of it&#8217;s cells.</p>
 <p>The number you want is in the third row, second column and it&#8217;s value is
 &#8220;47694.47&#8221;</p>
 <p>Let us use eppy to extract this number</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">eppy</span> <span class="kn">import</span> <span class="n">readhtml</span> <span class="c"># the eppy module with functions to read the html</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">eppy.results</span> <span class="kn">import</span> <span class="n">readhtml</span> <span class="c"># the eppy module with functions to read the html</span>
 <span class="n">fname</span> <span class="o">=</span> <span class="s">&quot;../eppy/resources/outputfiles/V_7_2/5ZoneCAVtoVAVWarmestTempFlowTable_ABUPS.html&quot;</span> <span class="c"># the html file you want to read</span>
 <span class="n">filehandle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c"># get a file handle to the html file</span>
 
@@ -227,7 +224,7 @@ The first two lines have information that describe the table. We need to
 look at both those lines to understand what the table contains. So we
 need a different function that will capture all those lines before the
 table. The funtion lines_table() described below will do this.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">eppy</span> <span class="kn">import</span> <span class="n">readhtml</span> <span class="c"># the eppy module with functions to read the html</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">eppy.results</span> <span class="kn">import</span> <span class="n">readhtml</span> <span class="c"># the eppy module with functions to read the html</span>
 <span class="n">fname</span> <span class="o">=</span> <span class="s">&quot;../eppy/resources/outputfiles/V_8_1/ASHRAE30pct.PI.Final11_OfficeMedium_STD2010_Chicago-baseTable.html&quot;</span> <span class="c"># the html file you want to read</span>
 <span class="n">filehandle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c"># get a file handle to the html file</span>
 
@@ -451,7 +448,7 @@ The only limitation is that the labels have to be letters or digits.
 Named tuples does not allow spaces in the labels. We could replace the
 space with an underscore &#8216; _ &#8216;. So &#8220;a b&#8221; will become &#8220;a_b&#8221;. So we can
 look for row &#8220;x_y&#8221; and column &#8220;c_d&#8221;. Let us try this out.</p>
-<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">eppy</span> <span class="kn">import</span> <span class="n">readhtml</span>
+<div class="code python highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">eppy.results</span> <span class="kn">import</span> <span class="n">readhtml</span>
 <span class="n">h_table</span> <span class="o">=</span> <span class="n">readhtml</span><span class="o">.</span><span class="n">named_grid_h</span><span class="p">(</span><span class="n">atable</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -607,15 +604,12 @@ really need a list of numbers</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
           <a href="newfunctions.html" title="New functions"
              >next</a> |</li>
         <li class="right" >
           <a href="HVAC_Tutorial.html" title="HVAC Loops"
              >previous</a> |</li>
-        <li><a href="index.html">eppy 0.5 documentation</a> &raquo;</li> 
+        <li><a href="index.html">eppy 0.5.43 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

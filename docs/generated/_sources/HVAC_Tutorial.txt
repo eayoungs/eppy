@@ -548,7 +548,3 @@ side.
 Again, just as we did in the plant and condensor loop, we can change the
 components of the loop, by replacing the branchs and traverse the loop
 using the functions nextnode() and prevnode()
-
-.. code:: python
-
-    

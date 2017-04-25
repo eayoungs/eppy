@@ -48,7 +48,7 @@ Let us use eppy to extract this number
 
 .. code:: python
 
-    from eppy import readhtml # the eppy module with functions to read the html
+    from eppy.results import readhtml # the eppy module with functions to read the html
     fname = "../eppy/resources/outputfiles/V_7_2/5ZoneCAVtoVAVWarmestTempFlowTable_ABUPS.html" # the html file you want to read
     filehandle = open(fname, 'r').read() # get a file handle to the html file
     
@@ -253,7 +253,7 @@ table. The funtion lines\_table() described below will do this.
 
 .. code:: python
 
-    from eppy import readhtml # the eppy module with functions to read the html
+    from eppy.results import readhtml # the eppy module with functions to read the html
     fname = "../eppy/resources/outputfiles/V_8_1/ASHRAE30pct.PI.Final11_OfficeMedium_STD2010_Chicago-baseTable.html" # the html file you want to read
     filehandle = open(fname, 'r').read() # get a file handle to the html file
     
@@ -543,7 +543,7 @@ look for row "x\_y" and column "c\_d". Let us try this out.
 
 .. code:: python
 
-    from eppy import readhtml
+    from eppy.results import readhtml
     h_table = readhtml.named_grid_h(atable)
 
 .. code:: python
@@ -708,7 +708,3 @@ To get the first row we use the variable h\_table
     [1, 2, 3]
     6
 
-
-.. code:: python
-
-    

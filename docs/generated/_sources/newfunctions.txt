@@ -96,12 +96,6 @@ So let us set the **idd** file and then open the idf file
     IDF.setiddname(iddfile)
     idf1 = IDF(fname1)
 
-
-.. parsed-literal::
-
-    ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'add2node', 'addinnode', 'dt', 'dtls', 'getrefs', 'initdict', 'makedict', 'replacenode']
-
-
 That worked without raising an exception
 
 Now let us try to change the **idd** file. Eppy should not let you do
@@ -159,12 +153,6 @@ demonstrate two new functions:
 
     # IDF.setiddname(iddfile)# idd ws set further up in this page
     idf1 = IDF(fname1)
-
-
-.. parsed-literal::
-
-    ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'add2node', 'addinnode', 'dt', 'dtls', 'getrefs', 'initdict', 'makedict', 'replacenode']
-
 
 .. code:: python
 
@@ -335,7 +323,6 @@ Here are the steps to do that
 
 .. parsed-literal::
 
-    ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'add2node', 'addinnode', 'dt', 'dtls', 'getrefs', 'initdict', 'makedict', 'replacenode']
     
     VERSION,                  
         7.3;                      !- Version Identifier
@@ -376,82 +363,36 @@ Here are the steps to do that
     idf_fromfilehandle.printidf()
 
 
-::
-
-
-    ---------------------------------------------------------------------------
-    AttributeError                            Traceback (most recent call last)
-
-    <ipython-input-16-ab76e2c095ca> in <module>()
-          2 fname1 = "../eppy/resources/idffiles/V_7_2/smallfile.idf"
-          3 fhandle = open(fname1, 'r') # open the file for reading and assign it a file handle
-    ----> 4 idf_fromfilehandle = IDF(fhandle) # initialize the IDF object with the file handle
-          5 
-          6 idf_fromfilehandle.printidf()
-
-
-    /Users/santoshphilip/Documents/coolshadow/eppy/eppy/modeleditor.pyc in __init__(self, idfname)
-        630     """
-        631     def __init__(self, idfname=None):
-    --> 632         super(IDF3, self).__init__(idfname)
-        633     def initread(self, idfname):
-        634         """use the latest iddfile and read file fname
-
-
-    /Users/santoshphilip/Documents/coolshadow/eppy/eppy/modeleditor.pyc in __init__(self, idfname)
-        575     """
-        576     def __init__(self, idfname=None):
-    --> 577         super(IDF2, self).__init__(idfname)
-        578         self.outputtype = "standard" # standard,
-        579                                     # nocomment,
-
-
-    /Users/santoshphilip/Documents/coolshadow/eppy/eppy/modeleditor.pyc in __init__(self, idfname)
-        499     """
-        500     def __init__(self, idfname=None):
-    --> 501         super(IDF1, self).__init__(idfname)
-        502     def newidfobject(self, key, aname='', **kwargs):
-        503     # def newidfobject(self, key, *args, **kwargs):
-
-
-    /Users/santoshphilip/Documents/coolshadow/eppy/eppy/modeleditor.pyc in __init__(self, idfname)
-        452         if idfname != None:
-        453             self.idfname = idfname
-    --> 454             self.read()
-        455     @classmethod
-        456     def setiddname(cls, arg, testing=False):
-
-
-    /Users/santoshphilip/Documents/coolshadow/eppy/eppy/modeleditor.pyc in read(self)
-        484         readout = idfreader1(
-        485             self.idfname, self.iddname,
-    --> 486             commdct=self.idd_info, block=self.block)
-        487         self.idfobjects, block, self.model, idd_info = readout
-        488         self.__class__.setidd(idd_info, block)
-
-
-    /Users/santoshphilip/Documents/coolshadow/eppy/eppy/idfreader.py in idfreader1(fname, iddfile, conv, commdct, block)
-        164         block=block)
-        165     if conv:
-    --> 166         convertallfields(data, commdct)
-        167     # fill gaps in idd
-        168     ddtt, dtls = data.dt, data.dtls
-
-
-    /Users/santoshphilip/Documents/coolshadow/eppy/eppy/idfreader.py in convertallfields(data, commdct)
-         94     """docstring for convertallfields"""
-         95     print(dir(data))
-    ---> 96     for key in data.dt.keys():
-         97         objs = data.dt[key]
-         98         for i, obj in enumerate(objs):
-
-
-    AttributeError: 'eplusdata' object has no attribute 'dt'
-
-
 .. parsed-literal::
 
-    ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'add2node', 'addinnode', 'getrefs', 'initdict', 'makedict', 'replacenode']
+    
+    VERSION,                  
+        7.3;                      !- Version Identifier
+    
+    SIMULATIONCONTROL,        
+        Yes,                      !- Do Zone Sizing Calculation
+        Yes,                      !- Do System Sizing Calculation
+        Yes,                      !- Do Plant Sizing Calculation
+        No,                       !- Run Simulation for Sizing Periods
+        Yes;                      !- Run Simulation for Weather File Run Periods
+    
+    BUILDING,                 
+        Empire State Building,    !- Name
+        30.0,                     !- North Axis
+        City,                     !- Terrain
+        0.04,                     !- Loads Convergence Tolerance Value
+        0.4,                      !- Temperature Convergence Tolerance Value
+        FullExterior,             !- Solar Distribution
+        25,                       !- Maximum Number of Warmup Days
+        6;                        !- Minimum Number of Warmup Days
+    
+    SITE:LOCATION,            
+        CHICAGO_IL_USA TMY2-94846,    !- Name
+        41.78,                    !- Latitude
+        -87.75,                   !- Longitude
+        -6.0,                     !- Time Zone
+        190.0;                    !- Elevation
+    
 
 
 .. code:: python
@@ -515,10 +456,10 @@ Let us confirm that the file was saved to disk
 
 .. parsed-literal::
 
+    !- Darwin Line endings 
     
     VERSION,                  
         7.3;                      !- Version Identifier
-    
 
 
 Yup ! that file was saved. Let us delete it since we were just playing
@@ -687,6 +628,26 @@ So let us remove the second material
 
     idf.popidfobject('MATERIAL', 1) # first material is '0', second is '1'
 
+
+
+
+.. parsed-literal::
+
+    
+    MATERIAL,                 
+        Lousy material,           !- Name
+        ,                         !- Roughness
+        ,                         !- Thickness
+        ,                         !- Conductivity
+        ,                         !- Density
+        ,                         !- Specific Heat
+        0.9,                      !- Thermal Absorptance
+        0.7,                      !- Solar Absorptance
+        0.7;                      !- Visible Absorptance
+
+
+
+
 .. code:: python
 
     print idf.idfobjects['MATERIAL']
@@ -729,15 +690,6 @@ first material, but do it using a different function
 .. code:: python
 
     idf.removeidfobject(firstmaterial)
-
-
-
-
-.. parsed-literal::
-
-    ['MATERIAL', 'third material', '', '', '', '', '', 0.9, 0.7, 0.7]
-
-
 
 .. code:: python
 
@@ -1093,4 +1045,430 @@ Some notes on the zone area calculation:
    zone area
 -  if there are no floors, ceilings or roof, we are out of luck. The
    function returns 0
+   
+Running EnergyPlus from Eppy
+----------------------------
+It would be great if we could run EnergyPlus directly from our IDF wouldn't it?
 
+Well here's how we can.
+
+.. code:: python
+
+	from eppy.runner import IDF5
+	    
+    fname1 = "../eppy/resources/idffiles/V_8_3/smallfile.idf"
+	epw = 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw'
+	idf = IDF5(open(fname1, 'r'), epw)
+	
+	idf.run()
+
+It's as simple as that to run using the EnergyPlus defaults, but all the 
+EnergyPlus command line interface options are also supported.
+
+To get a description of the options available, as well as the defaults you can 
+call the Python built-in `help` function on the `IDF5.run` method and it will 
+print a full description of the options to the console.
+
+.. code:: python
+
+	help(idf.run)
+
+.. parsed-literal::
+	
+	Help on method run in module eppy.runner.runner:
+	
+	run(self, **kwargs) method of eppy.runner.runner.IDF5 instance
+	    This method wraps the following method:
+	    
+	    run(idf=None, weather=None, output_directory=u'run_outputs', annual=False, 
+	    	design_day=False, idd=None, epmacro=False, expandobjects=False,
+	    	readvars=False, output_prefix=None, output_suffix=None, version=False, 
+	    	verbose=u'v')
+	    	
+	        Wrapper around the EnergyPlus command line interface.
+	        
+	        Parameters
+	        ----------
+	        idf : str
+	            Full or relative path to the IDF file to be run.
+	            
+	        weather : str
+	            Full or relative path to the weather file.
+	            
+	        output_directory : str, optional
+	            Full or relative path to an output directory (default: 'run_outputs)
+	            
+	        annual : bool, optional
+	            If True then force annual simulation (default: False)
+	            
+	        design_day : bool, optional
+	            Force design-day...
+
+Running in parallel processes
+----------------------------------------
+
+One of the great things about Eppy is that it allows you to set up a lot of 
+jobs really easily. However, it can be slow running a lot of EnergyPlus 
+simulations, so it's pretty important that we can make the most of the 
+processing power you have available by running on multiple CPUs.
+
+Again this is as simple as you'd hope it would be.
+
+You first need to create your jobs as a list of lists in the form 
+
+.. parsed-literal::
+    [[<IDF5 object>, <dict of command line parameters>], ...]
+
+The example here just creates 4 identical jobs apart from the 
+`output_directory` the results are saved in, but you would obviously want to 
+make each job different.
+
+.. code:: python
+	from eppy.runner.run_functions import multirunner
+	
+	fname1 = "../eppy/resources/idffiles/V8_3/smallfile.idf"
+	epw = 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw'
+	
+	runs = []
+	for i in range(4):
+		idf = IDF5(open(fname1, 'r'), epw)
+		runs.append([idf, {'output_directory': 'results_%i' % i}])
+	
+Then run the jobs on the required number of CPUs using `runIDFs`...
+
+.. code:: python
+	runIDFs(runs, num_CPUs=2)
+
+... and your results will all be in the `output_directory` you specified.
+
+
+Using JSON to update idf
+------------------------
+
+
+we are going to update ``idf1`` using json. First let us print the
+``idf1`` before changing it, so we can see what has changed once we make
+an update
+
+.. code:: python
+
+    idf1.printidf()
+
+.. parsed-literal::
+
+    
+    VERSION,                  
+        7.3;                      !- Version Identifier
+    
+    SIMULATIONCONTROL,        
+        Yes,                      !- Do Zone Sizing Calculation
+        Yes,                      !- Do System Sizing Calculation
+        Yes,                      !- Do Plant Sizing Calculation
+        No,                       !- Run Simulation for Sizing Periods
+        Yes;                      !- Run Simulation for Weather File Run Periods
+    
+    BUILDING,                 
+        Empire State Building,    !- Name
+        30.0,                     !- North Axis
+        City,                     !- Terrain
+        0.6,                      !- Loads Convergence Tolerance Value
+        0.4,                      !- Temperature Convergence Tolerance Value
+        FullExterior,             !- Solar Distribution
+        25,                       !- Maximum Number of Warmup Days
+        6;                        !- Minimum Number of Warmup Days
+    
+    SITE:LOCATION,            
+        CHICAGO_IL_USA TMY2-94846,    !- Name
+        41.78,                    !- Latitude
+        -87.75,                   !- Longitude
+        -6.0,                     !- Time Zone
+        190.0;                    !- Elevation
+    
+
+
+.. code:: python
+
+    import eppy.json_functions as json_functions
+    json_str = {"idf.VERSION..Version_Identifier":8.5,
+                "idf.SIMULATIONCONTROL..Do_Zone_Sizing_Calculation": "No",
+                "idf.SIMULATIONCONTROL..Do_System_Sizing_Calculation": "No",
+                "idf.SIMULATIONCONTROL..Do_Plant_Sizing_Calculation": "No",
+                "idf.BUILDING.Empire State Building.North_Axis": 52,
+                "idf.BUILDING.Empire State Building.Terrain": "Rural",
+                }
+    json_functions.updateidf(idf1, json_str)
+.. code:: python
+
+    idf1.printidf()
+
+.. parsed-literal::
+
+    
+    VERSION,                  
+        8.5;                      !- Version Identifier
+    
+    SIMULATIONCONTROL,        
+        No,                       !- Do Zone Sizing Calculation
+        No,                       !- Do System Sizing Calculation
+        No,                       !- Do Plant Sizing Calculation
+        No,                       !- Run Simulation for Sizing Periods
+        Yes;                      !- Run Simulation for Weather File Run Periods
+    
+    BUILDING,                 
+        Empire State Building,    !- Name
+        52,                       !- North Axis
+        Rural,                    !- Terrain
+        0.6,                      !- Loads Convergence Tolerance Value
+        0.4,                      !- Temperature Convergence Tolerance Value
+        FullExterior,             !- Solar Distribution
+        25,                       !- Maximum Number of Warmup Days
+        6;                        !- Minimum Number of Warmup Days
+    
+    SITE:LOCATION,            
+        CHICAGO_IL_USA TMY2-94846,    !- Name
+        41.78,                    !- Latitude
+        -87.75,                   !- Longitude
+        -6.0,                     !- Time Zone
+        190.0;                    !- Elevation
+    
+
+
+Compare the first printidf() and the second printidf().
+
+The syntax of the json string is described below::
+
+    idf.BUILDING.Empire State Building.Terrain": "Rural"
+    
+    The key fields are seperated by dots. Let us walk through each field:
+    
+    idf -> make a change to the idf. (in the future there may be changes that are not related to idf)
+    BUILDING -> the key for object to be changed
+    Empire State Building -> The name of the object. In other word - the value of the field `Name`
+    Terrain -> the field to be changed
+    
+    "Rural" -> the new value of the field
+    
+    If the object does not have a `Name` field, you leave a blank between the two dots and the first object will be changed. 
+    This is done for the version number change.
+    
+    "idf.VERSION..Version_Identifier":8.5
+
+You can also create a new object using JSON, using the same syntax. Take
+a look at this:
+
+.. code:: python
+
+    json_str = {"idf.BUILDING.Taj.Terrain": "Rural",}
+    json_functions.updateidf(idf1, json_str)
+    idf1.idfobjects['building'.upper()]
+    # of course, you are creating an invalid E+ file. But we are just playing here.
+
+
+
+.. parsed-literal::
+
+    [
+    BUILDING,                 
+        Empire State Building,    !- Name
+        52,                       !- North Axis
+        Rural,                    !- Terrain
+        0.6,                      !- Loads Convergence Tolerance Value
+        0.4,                      !- Temperature Convergence Tolerance Value
+        FullExterior,             !- Solar Distribution
+        25,                       !- Maximum Number of Warmup Days
+        6;                        !- Minimum Number of Warmup Days
+    , 
+    BUILDING,                 
+        Taj,                      !- Name
+        0.0,                      !- North Axis
+        Rural,                    !- Terrain
+        0.04,                     !- Loads Convergence Tolerance Value
+        0.4,                      !- Temperature Convergence Tolerance Value
+        FullExterior,             !- Solar Distribution
+        25,                       !- Maximum Number of Warmup Days
+        6;                        !- Minimum Number of Warmup Days
+    ]
+
+
+
+What if you object name had a dot ``.`` in it? Will the json\_function
+get confused?
+
+If the name has a dot in it, there are two ways of doing this.
+
+.. code:: python
+
+    # first way
+    json_str = {"idf.BUILDING.Taj.with.dot.Terrain": "Rural",}
+    json_functions.updateidf(idf1, json_str)
+    # second way (put the name in single quotes)
+    json_str = {"idf.BUILDING.'Another.Taj.with.dot'.Terrain": "Rural",}
+    json_functions.updateidf(idf1, json_str)
+.. code:: python
+
+    idf1.idfobjects['building'.upper()]
+
+
+
+.. parsed-literal::
+
+    [
+    BUILDING,                 
+        Empire State Building,    !- Name
+        52,                       !- North Axis
+        Rural,                    !- Terrain
+        0.6,                      !- Loads Convergence Tolerance Value
+        0.4,                      !- Temperature Convergence Tolerance Value
+        FullExterior,             !- Solar Distribution
+        25,                       !- Maximum Number of Warmup Days
+        6;                        !- Minimum Number of Warmup Days
+    , 
+    BUILDING,                 
+        Taj,                      !- Name
+        0.0,                      !- North Axis
+        Rural,                    !- Terrain
+        0.04,                     !- Loads Convergence Tolerance Value
+        0.4,                      !- Temperature Convergence Tolerance Value
+        FullExterior,             !- Solar Distribution
+        25,                       !- Maximum Number of Warmup Days
+        6;                        !- Minimum Number of Warmup Days
+    , 
+    BUILDING,                 
+        Taj.with.dot,             !- Name
+        0.0,                      !- North Axis
+        Rural,                    !- Terrain
+        0.04,                     !- Loads Convergence Tolerance Value
+        0.4,                      !- Temperature Convergence Tolerance Value
+        FullExterior,             !- Solar Distribution
+        25,                       !- Maximum Number of Warmup Days
+        6;                        !- Minimum Number of Warmup Days
+    , 
+    BUILDING,                 
+        Another.Taj.with.dot,     !- Name
+        0.0,                      !- North Axis
+        Rural,                    !- Terrain
+        0.04,                     !- Loads Convergence Tolerance Value
+        0.4,                      !- Temperature Convergence Tolerance Value
+        FullExterior,             !- Solar Distribution
+        25,                       !- Maximum Number of Warmup Days
+        6;                        !- Minimum Number of Warmup Days
+    ]
+
+
+
+**Note** When you us the json update function:
+
+-  The json function expects the ``Name`` field to have a value.
+-  If you try to update an object with a blank ``Name`` field, the
+   results may be unexpected (undefined ? :-). So don't do this.
+-  If the object has no ``Name`` field (some don't), changes are made to
+   the first object in the list. Which should be fine, since usually
+   there is only one item in the list
+-  In any case, if the object does not exist, it is created with the
+   default values
+
+
+Use Case for JSON update
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+If you have an eppy running on a remote server somewhere on the
+internet, you can change an idf file by sending it a JSON over the
+internet. This is very useful if you ever need it. If you don't need it,
+you shouldn't care :-)
+
+
+Running EnergyPlus from Eppy
+----------------------------
+It would be great if we could run EnergyPlus directly from our IDF wouldn't it?
+
+Well here's how we can.
+
+.. code:: python
+
+	from eppy.modeleditor import IDF
+	    
+    fname = "../eppy/resources/idffiles/V_8_3/smallfile.idf"
+	epw = 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw'
+	idf = IDF(fname, epw)
+	
+	idf.run()
+
+It's as simple as that to run using the EnergyPlus defaults, but all the 
+EnergyPlus command line interface options are also supported.
+
+To get a description of the options available, as well as the defaults you can 
+call the Python built-in `help` function on the `IDF.run` method and it will 
+print a full description of the options to the console.
+
+.. code:: python
+
+	help(idf.run)
+
+.. parsed-literal::
+	
+	Help on method run in module eppy.runner.runner:
+	
+	run(self, **kwargs) method of eppy.runner.runner.IDF instance
+	    This method wraps the following method:
+	    
+	    run(idf=None, weather=None, output_directory=u'run_outputs', annual=False, 
+	    	design_day=False, idd=None, epmacro=False, expandobjects=False,
+	    	readvars=False, output_prefix=None, output_suffix=None, version=False, 
+	    	verbose=u'v')
+	    	
+	        Wrapper around the EnergyPlus command line interface.
+	        
+	        Parameters
+	        ----------
+	        idf : str
+	            Full or relative path to the IDF file to be run.
+	            
+	        weather : str
+	            Full or relative path to the weather file.
+	            
+	        output_directory : str, optional
+	            Full or relative path to an output directory (default: 'run_outputs)
+	            
+	        annual : bool, optional
+	            If True then force annual simulation (default: False)
+	            
+	        design_day : bool, optional
+	            Force design-day...
+
+Running in parallel processes
+----------------------------------------
+
+One of the great things about Eppy is that it allows you to set up a lot of 
+jobs really easily. However, it can be slow running a lot of EnergyPlus 
+simulations, so it's pretty important that we can make the most of the 
+processing power you have available by running on multiple CPUs.
+
+Again this is as simple as you'd hope it would be.
+
+You first need to create your jobs as a list of lists in the form 
+
+.. parsed-literal::
+    [[<IDF object>, <dict of command line parameters>], ...]
+
+The example here just creates 4 identical jobs apart from the 
+`output_directory` the results are saved in, but you would obviously want to 
+make each job different.
+
+.. code:: python
+	from eppy.runner.run_functions import multirunner
+	
+	fname1 = "../eppy/resources/idffiles/V8_3/smallfile.idf"
+	epw = 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw'
+	
+	runs = []
+	for i in range(4):
+		idf = IDF(fname, epw)
+		runs.append([idf, {'output_directory': 'results_%i' % i}])
+	
+Then run the jobs on the required number of CPUs using `runIDFs`...
+
+.. code:: python
+	runIDFs(runs, num_CPUs=2)
+
+... and your results will all be in the `output_directory` you specified.
